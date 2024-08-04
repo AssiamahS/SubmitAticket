@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ticket Details</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Ticket Details</h1>
+  <div id="ticketDetails">
+    <!-- Ticket details will be dynamically added here -->
+  </div>
+
+  <script src="ticket.js"></script>
+  <script>
+    const ticketData = localStorage.getItem('ticket');
+    if (ticketData) {
+      const ticket = JSON.parse(ticketData);
+      const ticketDetails = document.querySelector('#ticketDetails');
+      ticketDetails.innerHTML = `
+        <h2>Ticket #${ticket.ticketNumber}</h2>
+        <p><strong>Name:</strong> ${ticket.name}</p>
+        <p><strong>Issue:</strong> ${ticket.issue}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
